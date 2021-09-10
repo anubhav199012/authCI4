@@ -64,7 +64,7 @@
             <button type="submit" class="btn btn-secondary w-100">Submit</button>
         </form>
 
-        <small>CodeIgniter 4 - Authentication &copy; <?= date('Y') ?></small>
+        <small>MLM Project &copy; <?= date('Y') ?></small>
     </div>
 
 <?= $this->endSection() ?>
