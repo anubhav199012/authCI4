@@ -11,7 +11,7 @@
         <div class="text-center mb-3">
             <img class="mb-3" src="img/logo.png" alt="" width="100">
             <h1 class="text-capitalize"><?= $uri->getSegment(1) ?></h1>
-            <p class="small"><a href="">Already Registerd</a></p>
+            <p class="small"><a href="http://localhost:8080/login">Already Registerd</a></p>
         </div>
 
         <?php if(session('success')) : ?>
