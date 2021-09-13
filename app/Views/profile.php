@@ -1,13 +1,15 @@
-<?= $this->extend('layouts/app') ?>
+<?= $this->extend('layouts/dashapp') ?>
 
-<?= $this->section('header') ?>
-    <?= $this->include('templates/header') ?>
+<?= $this->section('navbar') ?>
+    <?= $this->include('templates/navbar') ?>
+<?= $this->endSection() ?>
+
+<?= $this->section('sidebar') ?>
+    <?= $this->include('templates/sidebar') ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
     <?= $this->include('components/profile_card') ?>
 <?= $this->endSection() ?>
 
-<?= $this->section('footer') ?>
-    <?= $this->include('templates/footer') ?>
-<?= $this->endSection() ?>
+
