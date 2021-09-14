@@ -9,7 +9,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-    <?= $this->include('components/profile_card') ?>
+    <?= $this->include('components/dashboard') ?>
 <?= $this->endSection() ?>
 
 

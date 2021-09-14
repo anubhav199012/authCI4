@@ -11,7 +11,7 @@ class Home extends BaseController
 	{
 		if(!session('user_id')) return redirect()->route('loginForm');
 
-		return view('profile');
+		return view('dashboard');
 	}
 
 	//--------------------------------------------------------------------
