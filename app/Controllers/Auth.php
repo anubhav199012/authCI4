@@ -12,7 +12,7 @@ class Auth extends BaseController
     
     public function registrationForm()
     {
-        if(session('id')) return redirect()->route('dashboard');
+        if(session('user_id')) return redirect()->route('dashboard');
 
         return view('auth/register');
     }
@@ -44,7 +44,7 @@ class Auth extends BaseController
 
     public function loginForm()
     {
-        if(session('id')) return redirect()->route('dashboard');
+        if(session('user_id')) return redirect()->route('dashboard');
 
         return view('auth/login');
     }
@@ -67,7 +67,7 @@ class Auth extends BaseController
                       ->first();
 
         session()->set([
-            'id' => $user->id,
+            'user_id' => $user->user_id,
             'name' => $user->name,
             'email' => $user->email,
         ]);

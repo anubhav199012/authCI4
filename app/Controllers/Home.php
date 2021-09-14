@@ -9,7 +9,7 @@ class Home extends BaseController
 
 	public function dashboard()
 	{
-		if(!session('id')) return redirect()->route('loginForm');
+		if(!session('user_id')) return redirect()->route('loginForm');
 
 		return view('profile');
 	}
