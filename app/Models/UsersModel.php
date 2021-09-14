@@ -7,7 +7,7 @@ class UsersModel extends Model
     protected $table = 'users';
     protected $primaryKey = 'id';
     protected $returnType = 'object';
-    protected $allowedFields = ['name', 'email', 'email_verified_at', 'password'];
+    protected $allowedFields = ['name', 'email', 'email_verified_at', 'password', 'mobile'];
     protected $useTimestamps = true;
     protected $skipValidation = true;
     protected $beforeInsert = ['hashPassword'];
@@ -15,6 +15,7 @@ class UsersModel extends Model
 
     protected function hashPassword(array $data)
     {
+        print_r($data);
         if (!isset($data['data']['password'])) return $data;
 
         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);

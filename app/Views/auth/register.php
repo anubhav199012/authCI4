@@ -25,7 +25,7 @@
         <?= form_open($uri->getSegment(1), ['class' => 'w-100 p-4 bg-white rounded mb-3', 'style' => 'max-width: 400px;']) ?>
                   <div class="row">
                     <div class="form-group col-6">
-                      <label for="frist_name">First Name</label>
+                      <label for="frist_name">Full Name</label>
                       <input type="text" name="name" autofocus class="form-control <?= isset($validation) && $validation->hasError('name') ? 'is-invalid' : '' ?>" id="name" value="<?= old('name') ?>" required>
                       <?php if(isset($validation) && $validation->hasError('name')) : ?>
                           <div class="invalid-feedback">
@@ -34,15 +34,31 @@
                       <?php endif; ?>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control <?= isset($validation) && $validation->hasError('email') ? 'is-invalid' : '' ?>" id="email" value="<?= old('email') ?>" required>
-                    <?php if(isset($validation) && $validation->hasError('email')) : ?>
-                        <div class="invalid-feedback">
-                            <?= $validation->getError('email') ?>
-                        </div>
-                    <?php endif; ?>
-                  </div>
+                  <div class="row">
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" name="email" class="form-control <?= isset($validation) && $validation->hasError('email') ? 'is-invalid' : '' ?>" id="email" value="<?= old('email') ?>" required>
+                      <?php if(isset($validation) && $validation->hasError('email')) : ?>
+                          <div class="invalid-feedback">
+                              <?= $validation->getError('email') ?>
+                          </div>
+                      <?php endif; ?>
+                    </div>
+                  </div>  
+
+                  <div class="row">
+                    <div class="form-group">
+                      <label for="email">Mobile</label>
+                      <input type="mobile" name="mobile" class="form-control <?= isset($validation) && $validation->hasError('mobile') ? 'is-invalid' : '' ?>" id="mobile" value="<?= old('mobile') ?>" required>
+                      <?php if(isset($validation) && $validation->hasError('mobile')) : ?>
+                          <div class="invalid-feedback">
+                              <?= $validation->getError('mobile') ?>
+                          </div>
+                      <?php endif; ?>
+                    </div>
+                  </div>  
+
+
                   <div class="row">
                     <div class="form-group col-6">
                       <label for="password" class="d-block">Password</label>
@@ -65,8 +81,10 @@
                   </div>
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="agree" class="custom-control-input" id="agree">
-                      <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
+                      <label class="custom-control-label" style="color:#000;" for="agree">
+                       I Agree the <a href="javascript:void(0);" class="font-weight-bold">terms and conditions</a>.
+ 
+                    </label>
                     </div>
                   </div>
                   <div class="form-group">

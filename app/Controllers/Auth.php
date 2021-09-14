@@ -5,6 +5,11 @@ use \CodeIgniter\Exceptions\PageNotFoundException;
 
 class Auth extends BaseController
 {
+    public function index()
+    {
+        echo 'user is wroking..';
+    }
+    
     public function registrationForm()
     {
         if(session('id')) return redirect()->route('dashboard');
@@ -30,6 +35,7 @@ class Auth extends BaseController
             'name' => $this->request->getVar('name'),
             'email' => $this->request->getVar('email'),
             'password' => $this->request->getVar('password'),
+            'mobile' => $this->request->getVar('mobile'),
         ]);
 
         session()->setFlashdata('success', 'Successful Registration');
