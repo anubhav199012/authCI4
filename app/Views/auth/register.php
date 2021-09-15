@@ -95,7 +95,7 @@
                 </form>
               </div>
               <div class="mb-4 text-muted text-center">
-                Already Registered? <a href="login">Login</a>
+                Already Registered? <a href="<?php echo base_url() ;?>/login">Login</a>
               </div>
             </div>
           </div>

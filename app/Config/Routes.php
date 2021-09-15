@@ -38,6 +38,9 @@ $routes->get('login', 'Auth::loginForm', ['as' => 'loginForm']);
 $routes->post('login', 'Auth::loginUser', ['as' => 'loginUser']);
 $routes->post('logout', 'Auth::logoutUser', ['as' => 'logoutUser']);
 $routes->get('dashboard', 'Home::dashboard', ['as' => 'dashboard']);
+$routes->get('activeMember', 'Home::activeMember', ['as' => 'activeMember']);
+$routes->get('profile/(:num)', 'Home::profile/$1', ['as' => 'profile']);
+
 
 /*
 $routes->get('products', 'Product::feature');

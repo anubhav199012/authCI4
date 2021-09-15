@@ -24,6 +24,10 @@ class Users extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'package' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
             'gender' => [
 				'type' => 'VARCHAR',
 				'constraint' => '255',

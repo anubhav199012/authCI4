@@ -9,6 +9,8 @@
   <title>Aegis - Admin Dashboard Template</title>
   <!-- General CSS Files -->
   <link rel="stylesheet"  href="../assets/css/app.min.css">
+  <link rel="stylesheet" href="../assets/bundles/datatables/datatables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.2/css/dataTables.bootstrap5.min.css">
   <link rel="stylesheet" href="../assets/bundles/jqvmap/dist/jqvmap.min.css">
   <link rel="stylesheet" href="../assets/bundles/weather-icon/css/weather-icons.min.css">
   <link rel="stylesheet" href="../assets/bundles/weather-icon/css/weather-icons-wind.min.css">
@@ -34,6 +36,12 @@
   </div>
   <!-- General JS Scripts -->
   <script src="../assets/js/app.min.js"></script>
+  <!-- JS Libraies -->
+  <script src="../assets/bundles/datatables/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.2/js/dataTables.bootstrap5.min.js"></script>
+  <script src="../assets/bundles/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Page Specific JS File -->
+  <script src="../assets/js/page/datatables.js"></script>
   <!-- JS Libraies -->
   <script src="../assets/bundles/echart/echarts.js"></script>
   <script src="../assets/bundles/chartjs/chart.min.js"></script>

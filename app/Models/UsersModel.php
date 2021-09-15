@@ -23,6 +23,21 @@ class UsersModel extends Model
         return $data;
     }
 
+    public function get_allusers()
+    {
+        return $this->db->table('users')
+        ->where('is_delete',0)     
+        ->get()->getResultArray();
+    }
+
+    public function get_user($user_id)
+    {
+        return $this->db->table('users')
+        ->where('is_delete',0)     
+        ->where('user_id',$user_id) 
+        ->get()->getRow();
+    }
+
     /*public function getNews($slug = false)
     {
         if ($slug === false)
