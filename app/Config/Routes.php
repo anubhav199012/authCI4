@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+
 $routes->get('register', 'Auth::registrationForm', ['as' => 'registrationForm']);
 $routes->post('register', 'Auth::registerUser', ['as' => 'registerUser']);
 $routes->get('login', 'Auth::loginForm', ['as' => 'loginForm']);
@@ -40,6 +41,7 @@ $routes->post('logout', 'Auth::logoutUser', ['as' => 'logoutUser']);
 $routes->get('dashboard', 'Home::dashboard', ['as' => 'dashboard']);
 $routes->get('activeMember', 'Home::activeMember', ['as' => 'activeMember']);
 $routes->get('profile/(:num)', 'Home::profile/$1', ['as' => 'profile']);
+$routes->get('portal/(:any)', 'Portal::index/$1');
 
 
 /*

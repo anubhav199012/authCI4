@@ -31,6 +31,14 @@
                           <a href="#" data-cfemail="c2b6a7b1b682a7baa3afb2aea7eca1adaf"><?php echo $user->email ; ?></a>
                         </span>
                       </p>
+                      <p class="clearfix">
+                        <span class="float-left">
+                          Referral Link
+                        </span>
+                        <span class="float-right text-muted">
+                          <a href="#"><?php echo (isset($user->referral_link)) ? base_url('portal').'/'.$user->referral_link : ''; ?></a>
+                        </span>
+                      </p>
                     </div>
                   </div>
                   </div>

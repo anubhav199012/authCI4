@@ -15,4 +15,17 @@ class CustomRules
 
         return password_verify($data['password'], $user->password);
     }
+
+    //isEmailAvailable check during registration
+    public function isEmailAvailable($email)
+    {
+        $model = new UsersModel();
+
+        $result = $model->validateEmail($email);
+        if (empty($result)) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
 }

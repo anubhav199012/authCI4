@@ -40,8 +40,11 @@ class Validation
 			'label' => 'Name',
 		],
         'email' => [
-			'rules' => 'required|valid_email|max_length[255]|is_unique[users.email]',
+			'rules' => 'required|valid_email|max_length[255]|is_unique[users.email]|isEmailAvailable[users.email]',
 			'label' => 'Email Address',
+			'errors' => [
+                'isEmailAvailable' => 'Email Id Already Registered.'
+            ]
 		],
         'password' => [
 			'rules' => 'required|min_length[8]|max_length[255]',
