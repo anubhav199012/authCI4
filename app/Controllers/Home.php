@@ -65,6 +65,28 @@ class Home extends BaseController
 		return view('profile',$data);
 	}
 
+	public function editprofile(){
+		if(!session('user_id')) return redirect()->route('loginForm');
+	//	print_r("Test");
+	//	echo json_encode("Test");
+		/* if(!session('user_id')) return redirect()->route('loginForm');
+		$model = new UsersModel();
+		$data=[
+			'user' =>$model->get_user($user_id),
+		];
+
+		//print_r($data);
+
+		return view('profile',$data); */ 
+
+		$response = [
+			'success' => true,
+			'msg' => "Failed to create user",
+		];
+
+		return $this->response->setJSON($response);
+	}
+
 	//--------------------------------------------------------------------
 
 }

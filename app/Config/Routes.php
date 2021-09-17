@@ -41,6 +41,7 @@ $routes->post('logout', 'Auth::logoutUser', ['as' => 'logoutUser']);
 $routes->get('dashboard', 'Home::dashboard', ['as' => 'dashboard']);
 $routes->get('activeMember', 'Home::activeMember', ['as' => 'activeMember']);
 $routes->get('profile/(:num)', 'Home::profile/$1', ['as' => 'profile']);
+
 $routes->get('portal/(:any)', 'Portal::index/$1');
 
 

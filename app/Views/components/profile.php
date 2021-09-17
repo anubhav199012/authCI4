@@ -31,14 +31,16 @@
                           <a href="#" data-cfemail="c2b6a7b1b682a7baa3afb2aea7eca1adaf"><?php echo $user->email ; ?></a>
                         </span>
                       </p>
-                      <p class="clearfix">
-                        <span class="float-left">
-                          Referral Link
-                        </span>
-                        <span class="float-right text-muted">
-                          <a href="#"><?php echo (isset($user->referral_link)) ? base_url('portal').'/'.$user->referral_link : ''; ?></a>
-                        </span>
-                      </p>
+                      <?php if(session('role_type')==1){ ?>
+                        <p class="clearfix">
+                          <span class="float-left">
+                            Referral Link
+                          </span>
+                          <span class="float-right text-muted">
+                            <a href="#"><?php echo (isset($user->referral_link)) ? base_url('portal').'/'.$user->referral_link : ''; ?></a>
+                          </span>
+                        </p>
+                      <?php }?>
                     </div>
                   </div>
                   </div>
@@ -84,67 +86,153 @@
                 </div>-->
               </div>
               <div class="col-12 col-md-12 col-lg-8">
-                <div class="card">
+              <div class="card">
                   <div class="padding-20">
                     <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                      
                       <li class="nav-item">
                         <a class="nav-link active" id="profile-tab2" data-bs-toggle="tab" href="#settings" role="tab"
-                          aria-selected="false">Setting</a>
+                          aria-selected="false">Edit Profile</a>
                       </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link " id="home-tab2" data-bs-toggle="tab" href="#bankdetails" role="tab"
+                          aria-selected="true">Bank Details</a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link " id="home-tab3" data-bs-toggle="tab" href="#changepassword" role="tab"
+                          aria-selected="true">Change Password</a>
+                      </li>
+
                     </ul>
+                    <!--Start Tab for Bank Details-->
                     <div class="tab-content tab-bordered" id="myTab3Content">
-                      <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="profile-tab2">
-                        <form method="post" action="/update" class="needs-validation">
-                          <div class="card-header">
-                            <h4>Edit Profile</h4>
-                          </div>
+                      <div class="tab-pane fade" id="bankdetails" role="tabpanel" aria-labelledby="home-tab2">
+                        <div class="row">
+                        <form method="post" class="needs-validation">
                           <div class="card-body">
                             <div class="row">
-                              <div class="form-group col-md-12 col-12">
-                                <label>Full Name</label>
+                              <div class="form-group col-md-6 col-12">
+                                <label>Bank Name</label>
                                 <input type="text" class="form-control" value="John">
                                 <div class="invalid-feedback">
                                   Please fill in the first name
                                 </div>
                               </div>
+                              <div class="form-group col-md-6 col-12">
+                                <label>IFSC Code</label>
+                                <input type="text" class="form-control" value="Deo">
+                                <div class="invalid-feedback">
+                                  Please fill in the last name
+                                </div>
+                              </div>
                             </div>
                             <div class="row">
-                              <div class="form-group col-md-7 col-12">
-                                <label>Email</label>
+                              <div class="form-group col-md-6 col-12">
+                                <label>Account Number</label>
                                 <input type="email" class="form-control" value="test@example.com">
                                 <div class="invalid-feedback">
                                   Please fill in the email
                                 </div>
                               </div>
-                              <div class="form-group col-md-5 col-12">
-                                <label>Phone</label>
+                              <div class="form-group col-md-6 col-12">
+                                <label>Account Holde Name</label>
                                 <input type="tel" class="form-control" value="">
                               </div>
                             </div>
-                            <div class="row">
-                              <div class="form-group col-12">
-                                <label>Address</label>
-                                <textarea
-                                  class="form-control summernote-simple"></textarea>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="form-group mb-0 col-12">
-                                <div class="custom-control custom-checkbox">
-                                  <input type="checkbox" name="remember" class="custom-control-input" id="newsletter">
-                                  <label class="custom-control-label" for="newsletter">Subscribe to newsletter</label>
-                                  <div class="text-muted form-text">
-                                    You will get new information about products, offers and promotions
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                         
+                            
                           </div>
                           <div class="card-footer text-end">
                             <button class="btn btn-primary">Save Changes</button>
                           </div>
                         </form>
+                        </div>
                       </div>
+                      <!--End Tab for Bank Details-->
+                      <!--Start of Tab for Edit Profile-->
+                      <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="profile-tab2">
+                      <form action="javascript:void(0)" name="ajax_edit_form" id="ajax_edit_form" method="post" accept-charset="utf-8">                          
+                        <div class="card-body">
+                            <div class="row">
+                              <div class="form-group col-md-6 col-12">
+                                <label>Full Name</label>
+                                <input type="text" name="fullname" id="fullname" class="form-control" value="">
+                                <div class="invalid-feedback">
+                                  Please fill in the full name
+                                </div>
+                              </div>
+                              <div class="form-group col-md-6 col-12">
+                                <label>Phone Number</label>
+                                <input type="text" name="phone" id="phone" class="form-control" value="">
+                                <div class="invalid-feedback">
+                                  Please fill in the phone number
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="form-group col-md-6 col-12">
+                                <label>Select Gender</label>
+                                <select class="form-select form-control" >
+                                <option>Male</option>
+                                <option>Female</option>
+                                
+                              </select>
+                              </div>
+                              <div class="form-group col-md-6 col-12">
+                                <label>Country</label>
+                                <input type="text" class="form-control" name="country" id="country" value="">
+                                <div class="invalid-feedback">
+                                  Please fill in the country
+                                </div>
+                              </div>
+                             
+                            </div>
+                            <div class="row">
+                              <div class="form-group col-12">
+                                <label>Address</label>
+                                <textarea class="form-control summernote-simple" >
+
+                                </textarea>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-footer text-end">
+                            <button class="btn btn-primary" id="edit_profile" >Save Changes</button>
+                          </div>
+                        </form>
+                      </div>
+                      <!--End of Tab for Edit Profile-->
+                      <!--Start Tab for Change Password-->
+                      <div class="tab-pane fade" id="changepassword" role="tabpanel" aria-labelledby="profile-tab2">
+                        <form method="post" class="needs-validation">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="form-group col-md-6 col-12">
+                                <label>New Password</label>
+                                <input type="password" class="form-control" value="">
+                                <div class="invalid-feedback">
+                                  Please fill in the New Password
+                                </div>
+                              </div>
+                              <div class="form-group col-md-6 col-12">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control"  value="">
+                                <div class="invalid-feedback">
+                                  Please fill in the Confirm Password
+                                </div>
+                              </div>
+                            </div>
+                          
+                           
+                          </div>
+                          <div class="card-footer text-end">
+                            <button class="btn btn-primary" id="">Save Changes</button>
+                          </div>
+                        </form>
+                      </div>
+                      <!--End Tab for Change Password-->
                     </div>
                   </div>
                 </div>
@@ -153,3 +241,51 @@
           </div>
         </section>
       </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Validation library file -->
+<!-- Sweetalert library file -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
+
+<script>
+    $(function() {
+
+        // Adding form validation
+
+        // Ajax form submission with image
+        $('#ajax_edit_form').on('submit', function(e) {
+
+            e.preventDefault();
+
+            var formData = new FormData(this);
+            console.log(formData);
+            // OR var formData = $(this).serialize();
+
+            //We can add more values to form data
+            //formData.append("key", "value");
+
+            $.ajax({
+                url: "<?= site_url('home/editprofile') ?>",
+                type: "POST",
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "JSON",
+                success: function(data) {
+                    /* if (data.success == true) {
+                        Swal.fire('Saved!', '', 'success')
+                    } */
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log(errorThrown);
+
+                  console.log(textStatus);
+
+                  console.log(jqXHR);
+
+                    //alert('Error at add data', textStatus);
+                }
+            }); 
+        });
+    });
+</script>
