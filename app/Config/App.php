@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://localhost:8081/';
+	public $baseURL = 'http://localhost:8080/';
 
 	/*
 	|--------------------------------------------------------------------------
@@ -247,7 +247,7 @@ class App extends BaseConfig
 	public $CSRFHeaderName = 'X-CSRF-TOKEN';
 	public $CSRFCookieName = 'csrf_cookie_name';
 	public $CSRFExpire     = 7200;
-	public $CSRFRegenerate = true;
+	public $CSRFRegenerate = false;
 	public $CSRFRedirect   = true;
 
 	/*

@@ -5,7 +5,7 @@ use CodeIgniter\Model;
 class UsersModel extends Model
 {
     protected $table = 'users';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'user_id';
     protected $returnType = 'object';
     protected $allowedFields = ['name', 'email', 'email_verified_at', 'password', 'mobile', 'referral_link', 'referred_by'];
     protected $useTimestamps = true;
@@ -14,7 +14,7 @@ class UsersModel extends Model
     protected $beforeUpdate = ['hashPassword'];
 
     protected function hashPassword(array $data){
-        print_r($data);
+        //print_r($data);
         if (!isset($data['data']['password'])) return $data;
         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
         return $data;
@@ -62,15 +62,13 @@ class UsersModel extends Model
         ->get()->getRow();
     }
 
-    /*public function getNews($slug = false)
-    {
-        if ($slug === false)
-        {
-            return $this->findAll();
-        }
-
-        return $this->asArray()
-                    ->where(['slug' => $slug])
-                    ->first();
-    }*/
+    public function updateUserProfile($user_id, $data){
+        /* return $this->db->table('users')
+        ->update($data)
+        ->where('user_id', $user_id)
+        ->where('is_delete',0); */
+        $sql = `UPDATE users SET name= Amit Prasad WHERE user_id=2 AND is_delete=0`;
+        $this->db->query($sql);
+        return $db->affectedRows();
+    }
 }

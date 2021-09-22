@@ -6,6 +6,11 @@ use App\Models\UsersModel;
 class Home extends BaseController
 {
 
+	public function __construct()
+	{
+		helper(["url"]);
+	}
+
 	public function index()
 	{
 		return view('welcome_message');
@@ -67,24 +72,55 @@ class Home extends BaseController
 
 	public function editprofile(){
 		if(!session('user_id')) return redirect()->route('loginForm');
-	//	print_r("Test");
-	//	echo json_encode("Test");
-		/* if(!session('user_id')) return redirect()->route('loginForm');
-		$model = new UsersModel();
-		$data=[
-			'user' =>$model->get_user($user_id),
-		];
 
-		//print_r($data);
+		$userid=session('user_id');
 
-		return view('profile',$data); */ 
+		if ($this->request->getMethod() == "post") {
 
-		$response = [
-			'success' => true,
-			'msg' => "Failed to create user",
-		];
+			$rules = [
+				"fullname" => "required|min_length[4]",
+			//	"email" => "required|valid_email",
+				"mobile" => "required"
+			];
 
-		return $this->response->setJSON($response);
+			if (!$this->validate($rules)) {
+
+				$response = [
+					'success' => false,
+					'msg' => "There are some validation errors",
+				];
+
+				return $this->response->setJSON($response);
+			} else {
+
+				$model = new UsersModel();
+
+				$user_id = $this->request->getVar('userid');
+				$data = [
+					'name' => $this->request->getVar('fullname'),
+					'email'  => $this->request->getVar('email'),
+					'gender'  => $this->request->getVar('gender'),
+					"mobile" => $this->request->getVar("mobile"),
+					'country'  => $this->request->getVar('country'),
+				];
+
+
+				 if ($model->update($user_id,$data)) {
+
+					$response = [
+						'success' => true,
+						'msg' => "User Profile Updated",
+					];
+				} else {
+					$response = [
+						'success' => true,
+						'msg' => "Failed to update user",
+					];
+				} 
+
+				return $this->response->setJSON($response);
+			}
+		}	
 	}
 
 	//--------------------------------------------------------------------

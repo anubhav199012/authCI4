@@ -153,7 +153,9 @@
                       <!--End Tab for Bank Details-->
                       <!--Start of Tab for Edit Profile-->
                       <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="profile-tab2">
-                      <form action="javascript:void(0)" name="ajax_edit_form" id="ajax_edit_form" method="post" accept-charset="utf-8">                          
+                      <form action="javascript:void(0)" name="ajax_edit_form" id="ajax_edit_form" method="post" accept-charset="utf-8">  
+                      <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />     
+                      <input type="hidden" name="userid" class="form-control" id="userid" value="<?php echo $user->user_id ?>">                   
                         <div class="card-body">
                             <div class="row">
                               <div class="form-group col-md-6 col-12">
@@ -165,7 +167,7 @@
                               </div>
                               <div class="form-group col-md-6 col-12">
                                 <label>Phone Number</label>
-                                <input type="text" name="phone" id="phone" class="form-control" value="">
+                                <input type="text" name="mobile" id="mobile" class="form-control" value="">
                                 <div class="invalid-feedback">
                                   Please fill in the phone number
                                 </div>
@@ -174,9 +176,9 @@
                             <div class="row">
                               <div class="form-group col-md-6 col-12">
                                 <label>Select Gender</label>
-                                <select class="form-select form-control" >
-                                <option>Male</option>
-                                <option>Female</option>
+                                <select class="form-select form-control" name="gender" id="gender">
+                                <option value='Male'>Male</option>
+                                <option value='Female'>Female</option>
                                 
                               </select>
                               </div>
@@ -241,8 +243,10 @@
           </div>
         </section>
       </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <!-- JS Libraies -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Validation library file -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 <!-- Sweetalert library file -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
 
@@ -253,6 +257,8 @@
 
         // Ajax form submission with image
         $('#ajax_edit_form').on('submit', function(e) {
+           var csrfName = '<?= csrf_token() ?>';
+           var csrfHash = '<?= csrf_hash() ?>'; 
 
             e.preventDefault();
 
@@ -272,9 +278,9 @@
                 contentType: false,
                 dataType: "JSON",
                 success: function(data) {
-                    /* if (data.success == true) {
-                        Swal.fire('Saved!', '', 'success')
-                    } */
+                    if (data.success === false) {
+                        //Swal.fire('Saved!', '', 'success')
+                    } 
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                   console.log(errorThrown);

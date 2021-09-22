@@ -20,7 +20,7 @@
 # APP
 #--------------------------------------------------------------------
 
- app.baseURL = 'http://localhost:8081/'
+ app.baseURL = 'http://localhost:8080/'
 # app.forceGlobalSecureRequests = false
 
 # app.sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'
@@ -35,6 +35,14 @@
 # app.cookiePath = '/'
 # app.cookieSecure = false
 # app.cookieHTTPOnly = false
+
+
+app.CSRFProtection = true
+app.CSRFTokenName   = 'csrf_test_name'
+app.CSRFCookieName  = 'csrf_cookie_name'
+app.CSRFExpire      = 7200
+app.CSRFRegenerate  = false
+app.CSRFExcludeURIs = []
 
 # app.CSRFProtection  = false
 # app.CSRFTokenName   = 'csrf_test_name'
